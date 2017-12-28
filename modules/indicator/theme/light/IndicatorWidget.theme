@@ -1,5 +1,4 @@
 dtb--indicator--Entry QLabel {
     font-size: 13.5pt;
-    font-weight: 500;
     color: black;
 }

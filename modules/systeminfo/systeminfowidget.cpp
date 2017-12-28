@@ -20,10 +20,12 @@ SystemInfoWidget::SystemInfoWidget(QWidget *parent)
     m_tx = new QLabel;
     m_tx->setFixedHeight(12);
     m_tx->setText(converSpeed(0));
+    m_tx->setStyleSheet("QLabel { font-size: 12px; }");
 
     m_rx = new QLabel;
     m_rx->setFixedHeight(12);
     m_rx->setText(converSpeed(0));
+    m_rx->setStyleSheet("QLabel { font-size: 12px; }");
 
     FontLabel *up = new FontLabel;
     up->setIcon(QChar(0xE935), 12);
@@ -66,25 +68,25 @@ void SystemInfoWidget::setModel(SystemInfoModel *model)
 const QString SystemInfoWidget::converSpeed(const int value)
 {
     if (!value)
-        return "--/--";
+        return "0.0 B";
 
     QString speed;
 
     for (;;) {
         if (value < 1024) {
-            speed = QString::number(value) + "Bits/s";
+            speed = QString::number(value) + " B/s";
             break;
         }
         if (value / 1024 < 1024) {
-            speed = QString::number(value / 1024) + "KB/s";
+            speed = QString::number(value / 1024) + " KB/s";
             break;
         }
         if (value / 1024 / 1024 < 1024) {
-            speed = QString::number(value / 1024 / 1024) + "MB/s";
+            speed = QString::number(value / 1024 / 1024) + " MB/s";
             break;
         }
         if (value / 1024 / 1024 / 1024 < 1024) {
-            speed = QString::number(value / 1024 / 1024 / 1024) + "GB/s";
+            speed = QString::number(value / 1024 / 1024 / 1024) + " GB/s";
             break;
         }
     }
